@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 07:36:14 by taejkim           #+#    #+#             */
-/*   Updated: 2020/12/27 07:54:59 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:44:23 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_atoi(const char *nptr)
 {
-	int res;
-	int pos;
-	int i;
+	unsigned long long	res;
+	int					pos;
+	int					i;
 
 	res = 0;
 	pos = 1;
@@ -24,15 +24,17 @@ int		ft_atoi(const char *nptr)
 	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t'
 			|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		++i;
+	if (nptr[i] == '-')
+		pos *= -1;
 	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-			pos *= -1;
 		++i;
-	}
 	while ('0' <= nptr[i] && nptr[i] <= '9')
 	{
 		res = (nptr[i] - '0') + (res * 10);
+		if (res > 9223372036854775807 && (pos == 1))
+			return (-1);
+		if (res > 9223372036854775807 && (pos == -1))
+			return (0);
 		++i;
 	}
 	return (res * pos);
