@@ -6,7 +6,7 @@
 #    By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/28 14:44:00 by taejkim           #+#    #+#              #
-#    Updated: 2021/01/13 02:25:49 by taejkim          ###   ########.fr        #
+#    Updated: 2021/01/13 02:36:37 by taejkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJ)
+	ar -rcs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 bonus: $(OBJS) $(OBJS_B)
