@@ -6,13 +6,16 @@
 #    By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/28 14:44:00 by taejkim           #+#    #+#              #
-#    Updated: 2021/01/07 16:12:08 by taejkim          ###   ########.fr        #
+#    Updated: 2021/01/13 02:25:49 by taejkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_toupper.c ft_tolower.c \
 		ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_memchr.c ft_memcmp.c \
@@ -23,23 +26,29 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_split.c ft_itoa.c ft_strmapi.c \
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-OBJ = $(subst .c,.o,$(SRC))
+SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
+		ft_lstiter.c ft_lstmap.c
 
-CFLAGS = -Wall -Werror -Wextra
+OBJS = $(SRCS:.c=.o)
+OBJS_B = $(SRCS_B:.c=.o)
 
-$(NAME):
-	gcc $(CFLAGS) -c $(SRC)
+$(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+bonus: $(OBJS) $(OBJS_B)
+	ar -rcs $(NAME) $(OBJS) $(OBJS_B)
 	ranlib $(NAME)
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: bonus all clean fclean re
