@@ -6,7 +6,7 @@
 #    By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/28 14:44:00 by taejkim           #+#    #+#              #
-#    Updated: 2021/01/13 02:36:37 by taejkim          ###   ########.fr        #
+#    Updated: 2021/01/13 15:11:28 by taejkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = libft.a
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+AR = ar -rcs
+RM = rm -f
 
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_toupper.c ft_tolower.c \
@@ -34,20 +36,18 @@ OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
 
 $(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
-	ranlib $(NAME)
+	$(AR) $@ $^
 
 bonus: $(OBJS) $(OBJS_B)
-	ar -rcs $(NAME) $(OBJS) $(OBJS_B)
-	ranlib $(NAME)
+	$(AR) $(NAME) $^
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
