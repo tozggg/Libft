@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 14:58:15 by taejkim           #+#    #+#             */
-/*   Updated: 2020/12/29 16:04:15 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/01/14 21:49:53 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
 	size_t	len;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);

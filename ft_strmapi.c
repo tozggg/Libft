@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:39:38 by taejkim           #+#    #+#             */
-/*   Updated: 2021/01/04 16:08:13 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/01/14 22:10:41 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		size;
 	int		i;
 
-	if (s == NULL)
+	if (s == NULL || f == NULL)
 		return (NULL);
 	size = ft_strlen(s);
 	ptr = (char *)malloc(sizeof(char) * (size + 1));
