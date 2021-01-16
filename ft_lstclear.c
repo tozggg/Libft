@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 21:19:27 by taejkim           #+#    #+#             */
-/*   Updated: 2021/01/11 21:38:36 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/01/16 16:07:54 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	if (lst == NULL || del == NULL)
 		return ;
 	tmp = *lst;
+	*lst = NULL;
 	while (tmp)
 	{
 		del(tmp->content);
 		free(tmp);
 		tmp = tmp->next;
 	}
-	*lst = NULL;
 }
